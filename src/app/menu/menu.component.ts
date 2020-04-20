@@ -1,18 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Dish } from '../shared/dish.model';
 
-@Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
-})
-export class MenuComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
-  }
-dishes: Dish[] = [
+
+const DISHES: Dish[] = [
     {
       id: '0',
       name: 'Uthappizza',
@@ -55,6 +47,22 @@ dishes: Dish[] = [
       description: 'A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms'
     }
    ];
+
+@Component({
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.scss']
+})
+
+export class MenuComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  dishes = DISHES;
+  selectedDish = DISHES[0];
 
 
 }
