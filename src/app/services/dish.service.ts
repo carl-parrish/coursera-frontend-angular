@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import * as R from 'ramda'
+import * as R from 'ramda';
 
 import { Dish } from '../shared/dish.model';
 import { DISHES } from '../shared/dishes';
@@ -17,10 +17,10 @@ export class DishService {
   }
 
   getDish(id: string): Dish {
-    return R.head(DISHES.filter((dish) => dish.id=== id));
+    return R.head( DISHES.filter((dish) => dish.id === id ));
   }
 
   getFeaturedDish(): Dish {
-    return R.head(DISHES.filter((dish) => dish.featured));
+    return R.head( DISHES.filter((dish) => dish.featured ));
   }
 }

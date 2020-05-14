@@ -23,6 +23,7 @@ import { DishService } from './services/dish.service';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { LeaderService } from './services/leader.service';
 import { MenuComponent } from './menu/menu.component';
 import { PromotionService } from './services/promotion.service';
 
@@ -49,7 +50,7 @@ import { PromotionService } from './services/promotion.service';
     FlexLayoutModule,
     FontAwesomeModule
   ],
-  providers: [DishService, PromotionService],
+  providers: [DishService, LeaderService, PromotionService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
