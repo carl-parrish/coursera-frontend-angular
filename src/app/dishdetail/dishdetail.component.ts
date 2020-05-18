@@ -24,7 +24,11 @@ export class DishdetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    /* tslint:disable:no-string-literal */
     const id = this.route.snapshot.params['id'];
+  /* tslint:enable:no-string-literal */
+
     this.dish = this.dishService.getDish(id);
   }
 
