@@ -29,7 +29,8 @@ export class DishdetailComponent implements OnInit {
     const id = this.route.snapshot.params['id'];
   /* tslint:enable:no-string-literal */
 
-    this.dish = this.dishService.getDish(id);
+    this.dishService.getDish(id)
+      .then(dish => this.dish = dish);
   }
 
   goBack(): void {

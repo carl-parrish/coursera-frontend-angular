@@ -12,15 +12,15 @@ export class PromotionService {
 
   constructor() { }
 
-  getPromotions(): Promotion[] {
-    return PROMOTIONS;
+  getPromotions(): Promise<Promotion[]> {
+    return Promise.resolve(PROMOTIONS);
   }
 
-  getPromotion(id: string): Promotion {
-    return R.head(PROMOTIONS.filter((promo) => promo.id === id));
+  getPromotion(id: string): Promise<Promotion> {
+    return Promise.resolve(R.head(PROMOTIONS.filter((promo) => promo.id === id)));
   }
 
-  getFeaturedPromotion(): Promotion {
-    return R.head(PROMOTIONS.filter((promotion) => promotion.featured));
+  getFeaturedPromotion(): Promise<Promotion> {
+    return Promise.resolve(R.head(PROMOTIONS.filter((promotion) => promotion.featured)));
   }
 }
