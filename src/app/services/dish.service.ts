@@ -13,14 +13,20 @@ export class DishService {
   constructor() { }
 
   getDishes(): Promise<Dish[]> {
-    return Promise.resolve(DISHES);
+    return new Promise(resolve => {
+      setTimeout(() => resolve(DISHES), 2000);
+    });
   }
 
   getDish(id: string): Promise<Dish> {
-    return Promise.resolve(R.head( DISHES.filter((dish) => dish.id === id )));
+    return new Promise(resolve =>{
+      setTimeout(() => resolve(R.head( DISHES.filter((dish) => dish.id === id ))), 2000)
+    });
   }
 
   getFeaturedDish(): Promise<Dish> {
-    return Promise.resolve(R.head( DISHES.filter((dish) => dish.featured )));
+    return new Promise( resolve => {
+      setTimeout( () => resolve(R.head( DISHES.filter((dish) => dish.featured ))) , 2000)
+    }) ;
   }
 }

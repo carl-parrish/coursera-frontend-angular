@@ -13,14 +13,20 @@ export class PromotionService {
   constructor() { }
 
   getPromotions(): Promise<Promotion[]> {
-    return Promise.resolve(PROMOTIONS);
+    return new Promise(resolve => {
+      setTimeout(() => resolve(PROMOTIONS), 2000);
+    });
   }
 
   getPromotion(id: string): Promise<Promotion> {
-    return Promise.resolve(R.head(PROMOTIONS.filter((promo) => promo.id === id)));
+    return new Promise(resolve => {
+      setTimeout(() => resolve(R.head(PROMOTIONS.filter((promo) => promo.id === id))), 2000);
+    });
   }
 
   getFeaturedPromotion(): Promise<Promotion> {
-    return Promise.resolve(R.head(PROMOTIONS.filter((promotion) => promotion.featured)));
+    return new Promise(resolve => {
+      setTimeout(() => resolve(R.head(PROMOTIONS.filter((promotion) => promotion.featured))), 2000);
+    });
   }
 }

@@ -15,15 +15,21 @@ export class LeaderService {
   constructor() { }
 
   getLeaders(): Promise<Leader[]> {
-    return Promise.resolve(this.leaders);
+    return new Promise(resolve => {
+      setTimeout(() => resolve(this.leaders), 2000)
+    });
   }
 
   getLeader(id: string): Promise<Leader> {
-    return Promise.resolve(R.head(this.leaders.filter((leader) => leader.id === id)));
+    return new Promise(resolve => {
+      setTimeout(() => resolve(R.head(this.leaders.filter((leader) => leader.id === id))), 2000)
+    });
   }
 
   getFeaturedLeader(): Promise<Leader> {
-    return Promise.resolve(R.head(this.leaders.filter((leader) => leader.featured)));
+    return new Promise(resolve => {
+      setTimeout(() => resolve(R.head(this.leaders.filter((leader) => leader.featured))), 2000)
+    });
   }
 
 }
