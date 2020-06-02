@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import * as R from 'ramda';
+import { of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 import { Promotion } from '../shared/promotion.model';
 import { PROMOTIONS } from '../shared/promotions';
@@ -13,20 +15,16 @@ export class PromotionService {
   constructor() { }
 
   getPromotions(): Promise<Promotion[]> {
-    return new Promise(resolve => {
-      setTimeout(() => resolve(PROMOTIONS), 2000);
-    });
+    return of(PROMOTIONS).pipe(delay(2000)).toPromise();
   }
 
   getPromotion(id: string): Promise<Promotion> {
-    return new Promise(resolve => {
-      setTimeout(() => resolve(R.head(PROMOTIONS.filter((promo) => promo.id === id))), 2000);
-    });
+    return of(R.head(PROMOTIONS.filter((promo) => promo.id === id)))
+    .pipe(delay(2000)).toPromise();
   }
 
   getFeaturedPromotion(): Promise<Promotion> {
-    return new Promise(resolve => {
-      setTimeout(() => resolve(R.head(PROMOTIONS.filter((promotion) => promotion.featured))), 2000);
-    });
+    return of(R.head(PROMOTIONS.filter((promotion) => promotion.featured)))
+    .pipe(delay(2000)).toPromise();
   }
 }
