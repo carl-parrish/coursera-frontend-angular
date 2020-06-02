@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import * as R from 'ramda';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
 import { Dish } from '../shared/dish.model';
@@ -14,19 +14,17 @@ export class DishService {
 
   constructor() { }
 
-  getDishes(): Promise<Dish[]> {
-    return of(DISHES).pipe(delay(2000)).toPromise();
+  getDishes(): Observable<Dish[]> {
+    return of(DISHES).pipe(delay(2000));
   }
 
-  getDish(id: string): Promise<Dish> {
+  getDish(id: string): Observable<Dish> {
     return of(R.head( DISHES.filter((dish) => dish.id === id )))
-      .pipe(delay(2000))
-      .toPromise();
+      .pipe(delay(2000));
   }
 
-  getFeaturedDish(): Promise<Dish> {
+  getFeaturedDish(): Observable<Dish> {
     return of(R.head( DISHES.filter((dish) => dish.featured )))
-      .pipe(delay(2000))
-      .toPromise();
+      .pipe(delay(2000));
   }
 }

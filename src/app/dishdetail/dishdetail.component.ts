@@ -30,7 +30,7 @@ export class DishdetailComponent implements OnInit {
   /* tslint:enable:no-string-literal */
 
     this.dishService.getDish(id)
-      .then(dish => this.dish = dish);
+      .subscribe(dish => this.dish = dish);
   }
 
   goBack(): void {
