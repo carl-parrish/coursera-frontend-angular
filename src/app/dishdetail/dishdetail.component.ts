@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Params, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Dish } from '../shared/dish.model';
 import { DishService } from '../services/dish.service';
+import { Comment } from '../shared/comment.model';
 
 import { switchMap } from 'rxjs/operators';
 
@@ -21,12 +23,17 @@ export class DishdetailComponent implements OnInit {
   next: string;
 
   selectedDish: Dish = this.dish;
+  commentForm: FormGroup;
+  comment: Comment;
 
   constructor(
     private dishService: DishService,
     private location: Location,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+    private fb: FormBuilder
+  ) {
+    this.createForm();
+  }
 
   ngOnInit(): void {
 
@@ -37,6 +44,17 @@ export class DishdetailComponent implements OnInit {
     .pipe(switchMap((params: Params) => this.dishService
     .getDish(params['id'])))
     .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); });
+  }
+
+  createForm(): void {
+    this.commentForm = this.fb.group ({
+      author: '',
+      rating: 5,
+      comment: '',
+    });
+  }
+
+  onSubmit(): void {
 
   }
 
